@@ -1,0 +1,19 @@
+.main-talk
+  .main-talk__contents-right
+    .group-btn__menber
+  .message-list-form
+    .group-name-edit
+      .name
+        = link_to edit_group_path(@group), class: "edit-group-path" do
+          = @group.name
+    .messages
+      = render @messages
+    .message-form
+      .form
+        = form_for [@group, @message] do |f|
+          .input-box
+            = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+            = f.label :image, class: 'form__mask__image' do
+              = icon('fas', 'image', class: 'icon')
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'submit-btn'
